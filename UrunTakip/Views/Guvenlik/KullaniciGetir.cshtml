@@ -1,0 +1,28 @@
+﻿@model UrunTakip.Models.Entity.TBL_Users
+@{
+    ViewBag.Title = "KullaniciGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@using (Html.BeginForm("Guncelle", "Guvenlik", FormMethod.Post))
+{
+
+<div class="form-group">
+    @Html.HiddenFor(model => model.UserId)
+    <br />
+    @Html.LabelFor(m => m.UserName)
+    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.UserPassword)
+    @Html.TextBoxFor(m => m.UserPassword, new { @class = "form-control" })
+
+</div>
+    <div>
+        <button class="btn btn-warning" id="BtnKullaniciGuncelle">Güncelle</button>
+
+    </div>
+}
+<script>
+    $('#BtnKullaniciGuncelle').click(function () {
+        alert('Ürün Güncelleme İşlemi Başarılı.');
+    });
+</script>

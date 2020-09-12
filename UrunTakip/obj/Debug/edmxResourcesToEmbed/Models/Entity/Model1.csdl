@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UrunTakipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TBL_Musteriler">
+    <Key>
+      <PropertyRef Name="MusteriId" />
+    </Key>
+    <Property Name="MusteriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MusteriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MusteriSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBL_Satislar" Relationship="UrunTakipModel.FK_TBL_Satislar_TBL_Musteriler" FromRole="TBL_Musteriler" ToRole="TBL_Satislar" />
+  </EntityType>
+  <EntityType Name="TBL_Urunler">
+    <Key>
+      <PropertyRef Name="UrunId" />
+    </Key>
+    <Property Name="UrunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UrunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UrunFiyat" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Stok" Type="Int32" />
+    <NavigationProperty Name="TBL_Satislar" Relationship="UrunTakipModel.FK_TBL_Satislar_TBL_Urunler" FromRole="TBL_Urunler" ToRole="TBL_Satislar" />
+  </EntityType>
+  <EntityType Name="TBL_Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="UrunTakipEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TBL_Musteriler" EntityType="Self.TBL_Musteriler" />
+    <EntitySet Name="TBL_Urunler" EntityType="Self.TBL_Urunler" />
+    <EntitySet Name="TBL_Users" EntityType="Self.TBL_Users" />
+    <EntitySet Name="TBL_Satislar" EntityType="UrunTakipModel.TBL_Satislar" />
+    <AssociationSet Name="FK_TBL_Satislar_TBL_Musteriler" Association="UrunTakipModel.FK_TBL_Satislar_TBL_Musteriler">
+      <End Role="TBL_Musteriler" EntitySet="TBL_Musteriler" />
+      <End Role="TBL_Satislar" EntitySet="TBL_Satislar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Satislar_TBL_Urunler" Association="UrunTakipModel.FK_TBL_Satislar_TBL_Urunler">
+      <End Role="TBL_Urunler" EntitySet="TBL_Urunler" />
+      <End Role="TBL_Satislar" EntitySet="TBL_Satislar" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TBL_Satislar">
+    <Key>
+      <PropertyRef Name="SatisId" />
+    </Key>
+    <Property Name="SatisId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Urun" Type="Int32" />
+    <Property Name="Musteri" Type="Int32" />
+    <Property Name="Adet" Type="Int32" />
+    <Property Name="Fiyat" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="SevkTarihi" Type="DateTime" Precision="7" />
+    <Property Name="KamyonPlaka" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="KamyonDurum" Type="Int32" />
+    <NavigationProperty Name="TBL_Musteriler" Relationship="UrunTakipModel.FK_TBL_Satislar_TBL_Musteriler" FromRole="TBL_Satislar" ToRole="TBL_Musteriler" />
+    <NavigationProperty Name="TBL_Urunler" Relationship="UrunTakipModel.FK_TBL_Satislar_TBL_Urunler" FromRole="TBL_Satislar" ToRole="TBL_Urunler" />
+  </EntityType>
+  <Association Name="FK_TBL_Satislar_TBL_Musteriler">
+    <End Type="UrunTakipModel.TBL_Musteriler" Role="TBL_Musteriler" Multiplicity="0..1" />
+    <End Type="UrunTakipModel.TBL_Satislar" Role="TBL_Satislar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_Musteriler">
+        <PropertyRef Name="MusteriId" />
+      </Principal>
+      <Dependent Role="TBL_Satislar">
+        <PropertyRef Name="Musteri" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Satislar_TBL_Urunler">
+    <End Type="UrunTakipModel.TBL_Urunler" Role="TBL_Urunler" Multiplicity="0..1" />
+    <End Type="UrunTakipModel.TBL_Satislar" Role="TBL_Satislar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_Urunler">
+        <PropertyRef Name="UrunId" />
+      </Principal>
+      <Dependent Role="TBL_Satislar">
+        <PropertyRef Name="Urun" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

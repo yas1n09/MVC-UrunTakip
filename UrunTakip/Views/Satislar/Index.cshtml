@@ -1,0 +1,81 @@
+﻿@using UrunTakip.Models.Entity;
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBL_Satislar>
+
+
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>SatışId</th>
+            <th>Ürün</th>
+            <th>Müşteri Ad Soyad</th>
+            <th>Adet</th>
+            <th>Fiyat</th>
+            <th>Sevk Tarihi / Saati</th>
+            <th>Araç Plaka</th>
+            <th>Araç Durum </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sts in Model)
+        {
+            string _class = "";
+            if (sts.KamyonDurum == 0)
+            {
+
+            }
+            else if (sts.KamyonDurum == 1)
+            {
+                _class = "table-warning";
+            }
+            else if (sts.KamyonDurum == 2)
+            {
+                _class = "table-success";
+            }
+            <tr class="@_class">
+                <th>@sts.SatisId</th>
+                <td>@sts.TBL_Urunler.UrunAdi</td>
+                <td>@sts.TBL_Musteriler.MusteriAd  @sts.TBL_Musteriler.MusteriSoyad</td>
+                <td>@sts.Adet</td>
+                <td>@sts.Fiyat</td>
+                <td>@sts.SevkTarihi</td>
+                <td>@sts.KamyonPlaka</td>
+                <td>
+                    @if (sts.KamyonDurum == 0)
+                    {
+                        @: Bekliyor
+                    }
+                    else if (sts.KamyonDurum == 1)
+                    {
+                        @: İçerde
+                    }
+                    else if (sts.KamyonDurum == 2)
+                    {
+                        @: Çıkış Yaptı
+                    }
+
+                </td>
+
+                <td><a href="/Satislar/SatisGetir/@sts.SatisId" class=" btn btn-warning">Güncelle</a></td>
+                <td><a href="/Satislar/SIL/@sts.SatisId" class="btn btn-danger">SİL</a></td>
+
+            </tr>
+        }
+
+
+
+    </tbody>
+
+</table>
+
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+<a href="/Satislar/SatisEkle/" class="btn btn-primary">YENİ SATIŞ EKLE</a>

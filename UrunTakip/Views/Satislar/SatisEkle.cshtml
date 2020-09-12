@@ -1,0 +1,47 @@
+﻿@model UrunTakip.Models.Entity.TBL_Satislar
+@{
+    ViewBag.Title = "SatisEkle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form method="post" class="form-group">
+
+    <div>
+        <label>Ürün Seçiniz</label>
+        @Html.DropDownListFor(m => m.TBL_Urunler.UrunId, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Müşteri Seçiniz</label>
+        @Html.DropDownListFor(m => m.TBL_Musteriler.MusteriId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>ADET</label>
+        <input type="text" class="form-control" name="Adet" required="" placeholder="Adet Bilgisini Giriniz." />
+    </div>
+    <div>
+        <label>FİYAT</label>
+        <input type="text" class="form-control" name="Fiyat" required="" placeholder="Fiyat Bigisini Giriniz." />
+    </div>
+    <div>
+        <label>SEVK TARİHİ</label>
+        <input type="text" class="form-control" name="SevkTarihi" required="" placeholder="YYYY-AA-GG 00:00 seklinde giriniz" />
+    </div>
+    <div>
+        <label>KAMYON PLAKA</label>
+        <input type="text" class="form-control" name="KamyonPlaka" required="" placeholder="09-TC-09 seklinde giriniz" />
+    </div>
+    <div>
+        <label>ARAÇ DURUM</label>
+        <input type="text" class="form-control" name="KamyonDurum" required="" placeholder="0-1-2 olarak giriniz" />
+        
+
+            <div style="margin-top:15px">
+                <button class="btn btn-info" id="BtnSatisEkle">Satış Ekle</button>
+            </div>
+</form>
+<script>
+    $('#BtnSatisEkle').click(function () {
+        alert('Satis Ekleme İşlemi Başarılı.');
+    });
+</script>
+

@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "YeniKullanici";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div>
+        <label>Kullanıcı Mail</label>
+        <input type="text" class="form-control" required="" name="UserName" />
+    </div>
+    <div>
+        <label>Parola</label>
+        <input type="text" class="form-control" required="" name="UserPassword" />
+    </div>
+    <div>
+        
+
+    <div style="margin-top:15px">
+        <button class="bt btn-info" id="BtnKullaniciEkle">Ürün Ekle</button>
+    </div>
+</form>
+<script>
+    $('#BtnKullaniciEkle').click(function () {
+        alert('Ürün Ekleme İşlemi Başarılı.');
+    });
+</script>

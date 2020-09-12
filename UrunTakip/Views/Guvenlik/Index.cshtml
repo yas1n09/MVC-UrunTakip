@@ -1,0 +1,38 @@
+﻿@using UrunTakip.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+
+@model PagedList.IPagedList<TBL_Users>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Kullanıcı Id</th>
+            <th>Kullanıcı Mail</th>
+            <th>Kullanıcı Şifre</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usr in Model)
+        {
+        <tr>
+            <th>@usr.UserId</th>
+            <td>@usr.UserName</td>
+            <td>@usr.UserPassword</td>
+
+            <td>
+                <a href="/Guvenlik/SIL/@usr.UserId" class=" btn btn-danger">SİL</a>
+                <a href="/Guvenlik/KullaniciGetir/@usr.UserId" class=" btn btn-warning">GÜNCELLE</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a href="/Guvenlik/YeniKullanici/" class="btn btn-primary">Kullanıcı Ekle </a>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+

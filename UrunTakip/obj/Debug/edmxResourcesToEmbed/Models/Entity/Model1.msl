@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UrunTakipModelStoreContainer" CdmEntityContainer="UrunTakipEntities2">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="UrunTakipModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_Musteriler">
+      <EntityTypeMapping TypeName="UrunTakipModel.TBL_Musteriler">
+        <MappingFragment StoreEntitySet="TBL_Musteriler">
+          <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
+          <ScalarProperty Name="MusteriAd" ColumnName="MusteriAd" />
+          <ScalarProperty Name="MusteriSoyad" ColumnName="MusteriSoyad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_Urunler">
+      <EntityTypeMapping TypeName="UrunTakipModel.TBL_Urunler">
+        <MappingFragment StoreEntitySet="TBL_Urunler">
+          <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+          <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+          <ScalarProperty Name="UrunFiyat" ColumnName="UrunFiyat" />
+          <ScalarProperty Name="Stok" ColumnName="Stok" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_Users">
+      <EntityTypeMapping TypeName="UrunTakipModel.TBL_Users">
+        <MappingFragment StoreEntitySet="TBL_Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_Satislar">
+      <EntityTypeMapping TypeName="UrunTakipModel.TBL_Satislar">
+        <MappingFragment StoreEntitySet="TBL_Satislar">
+          <ScalarProperty Name="KamyonDurum" ColumnName="KamyonDurum" />
+          <ScalarProperty Name="KamyonPlaka" ColumnName="KamyonPlaka" />
+          <ScalarProperty Name="SevkTarihi" ColumnName="SevkTarihi" />
+          <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+          <ScalarProperty Name="Adet" ColumnName="Adet" />
+          <ScalarProperty Name="Musteri" ColumnName="Musteri" />
+          <ScalarProperty Name="Urun" ColumnName="Urun" />
+          <ScalarProperty Name="SatisId" ColumnName="SatisId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

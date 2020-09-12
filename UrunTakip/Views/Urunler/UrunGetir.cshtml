@@ -1,0 +1,33 @@
+﻿@model UrunTakip.Models.Entity.TBL_Urunler
+@{
+    ViewBag.Title = "UrunGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@using (Html.BeginForm("Guncelle", "Urunler", FormMethod.Post))
+{
+    
+    <div class="form-group">
+        @Html.LabelFor(m => m.UrunId)
+        @Html.TextBoxFor(m => m.UrunId, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.UrunAdi)
+        @Html.TextBoxFor(m => m.UrunAdi, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.UrunFiyat)
+        @Html.TextBoxFor(m => m.UrunFiyat, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.Stok)
+        @Html.TextBoxFor(m => m.Stok, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning" id="BtnUrunGuncelle">Güncelle</button>
+
+    </div>
+}
+<script>
+    $('#BtnUrunGuncelle').click(function () {
+        alert('Ürün Güncelleme İşlemi Başarılı.');
+    });
+</script>
+
+

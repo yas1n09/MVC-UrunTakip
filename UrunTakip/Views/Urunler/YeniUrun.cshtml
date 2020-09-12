@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "YeniUrun";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<form class="form-group" method="post">
+    <div>
+        <label>ÜRÜN ADI</label>
+        <input type="text" class="form-control" required="" name="UrunAdi" />
+    </div>
+    <div>
+        <label>FİYAT</label>
+        <input type="text" class="form-control" required="" name="UrunFiyat" />
+    </div>
+    <div>
+        <label>STOK</label>
+        <input type="text" class="form-control" required="" name="Stok" />
+    </div>
+    
+    <div style="margin-top:15px">
+        <button class="bt btn-info" id="BtnUrunEkle">Ürün Ekle</button>
+    </div>
+</form>
+<script>
+    $('#BtnUrunEkle').click(function () {
+        alert('Ürün Ekleme İşlemi Başarılı.');
+    });
+</script>
+

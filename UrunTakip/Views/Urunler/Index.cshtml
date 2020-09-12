@@ -1,0 +1,43 @@
+﻿@using UrunTakip.Models.Entity
+@using PagedList;
+@using PagedList.Mvc;
+
+@model PagedList.IPagedList<TBL_Urunler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ÜRÜN ID</th>
+            <th>ÜRÜN ADI</th>
+            <th>FİYAT</th>
+            <th>STOK</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var urn in Model)
+        {
+            <tr>
+                <th>@urn.UrunId</th>
+                <td>@urn.UrunAdi</td>
+                <td>@urn.UrunFiyat</td>
+                <td>@urn.Stok</td>
+                <td>
+                    <a href="/Urunler/SIL/@urn.UrunId" class=" btn btn-danger">SİL</a>
+                    <a href="/Urunler/UrunGetir/@urn.UrunId" class=" btn btn-warning">GÜNCELLE</a>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Urunler/YeniUrun/" class="btn btn-primary">Urun Ekle </a>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+
+
+
+

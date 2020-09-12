@@ -1,0 +1,64 @@
+﻿@model UrunTakip.Models.Entity.TBL_Satislar
+@{
+    ViewBag.Title = "SatisGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    UrunTakip.Models.Entity.TBL_Musteriler musteri = ViewBag.m;
+}
+
+@using (Html.BeginForm("Guncelle", "Satislar", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.SatisId)
+<div class="form-group">
+
+    <br />
+
+   
+
+    <label>Ürün</label>
+
+    <select class="form-control" id="Urun" name="Urun">
+
+        @foreach (var item in (List<SelectListItem>)ViewBag.dgr)
+        {
+        <option value="@item.Value" selected="@(item.Value == Model.Urun.ToString())"> @item.Text </option>
+        }
+
+    </select>
+
+    <br />
+  
+
+    <label>Müşteri</label>
+
+    <select class="form-control" id="Musteri" name="Musteri">
+
+        @foreach (var item in (List<SelectListItem>)ViewBag.dgr1)
+        {
+            <option value="@item.Value" selected="@(item.Value == Model.Musteri.ToString())"> @item.Text </option>
+        }
+
+    </select>
+
+
+    <br />
+    @Html.LabelFor(m => m.Adet)
+    @Html.TextBoxFor(m => m.Adet, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.Fiyat)
+    @Html.TextBoxFor(m => m.Fiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.SevkTarihi)
+    @Html.TextBoxFor(m => m.SevkTarihi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.KamyonPlaka)
+    @Html.TextBoxFor(m => m.KamyonPlaka, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(m => m.KamyonDurum)
+    @Html.TextBoxFor(m => m.KamyonDurum, new { @class = "form-control" })
+</div>
+    <div>
+        <button class="btn btn-warning">Satış Güncelle</button>
+    </div>
+}
+

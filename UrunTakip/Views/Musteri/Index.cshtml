@@ -1,0 +1,38 @@
+﻿@using UrunTakip.Models.Entity
+@model List<TBL_Musteriler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@using (Html.BeginForm("Index", "Musteri", FormMethod.Get))
+{
+    <p>
+        <b>Aranacak Müşteri Adı:</b> @Html.TextBox("p", null, new { @class = "bigfield" })
+        <input type="submit" value="Ara" class="btn btn-outline-success" />
+    </p>
+}
+<table class="table table-bordered">
+    <tr>
+        <th>MÜŞTERİ ID</th>
+        <th>MÜŞTERİ ADI</th>
+        <th>MÜŞTERİ SOYADI</th>
+
+    </tr>
+    <tbody>
+        @foreach (var mus in Model)
+        {
+            <tr>
+                <th>@mus.MusteriId</th>
+                <td>@mus.MusteriAd</td>
+                <td>@mus.MusteriSoyad</td>
+                <td>
+                    <a href="/Musteri/SIL/@mus.MusteriId" class=" btn btn-danger">SIL</a>
+                    <a href="/Musteri/MusteriGetir/@mus.MusteriId" class=" btn btn-warning">GÜNCELLE</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Musteri/YeniMusteri/" class="btn btn-primary">Müşteri Ekle</a>
